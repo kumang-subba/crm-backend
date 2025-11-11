@@ -18,5 +18,11 @@ export function sendErrorResponse(res, statusCode, message, errors) {
 }
 
 export function sendCookieResponse(res, statusCode, message, data, tokenName, tokenValue) {
-  return res.cookie(tokenName, tokenValue).status(statusCode).json({ message, data });
+  return res
+    .cookie(tokenName, tokenValue, {
+      secure: true,
+      sameSite: "none",
+    })
+    .status(statusCode)
+    .json({ message, data });
 }

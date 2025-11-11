@@ -29,7 +29,7 @@ export async function login(req, res) {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return sendErrorResponse(res, 401, "Invalid credentials");
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: "7d" });
-    return sendCookieResponse(res, 200, "Login successful", user, "access_token", token);
+    return sendCookieResponse(res, 200, "Login successful", null, "access_token", token);
   } catch (err) {
     return sendErrorResponse(res, 500, err.message);
   }
