@@ -6,7 +6,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://kumang-subba.github.io"],
+    origin: "https://kumang-subba.github.io",
     credentials: true,
     allowedHeaders: "Content-Type, Authorization",
   }),
