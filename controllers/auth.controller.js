@@ -48,13 +48,13 @@ async function creatDefaultData(userId) {
     return;
   }
   const board = await boardModel.create({ name: "Leads", createdBy: userId });
-  const columnNames = ["backlog", "todo", "ongoing", "completed"];
+  const columnNames = ["new leads", "qualified", "negotiation", "closed"];
 
   const columnDesc = [
-    "Ideas or tasks that haven’t been started yet. This is the planning stage.",
-    "Tasks that are ready to begin but not yet in progress.",
-    "Tasks currently being worked on by the team.",
-    "Finished tasks that have been reviewed and approved.",
+    "Recently captured leads that need to be contacted and qualified.",
+    "Leads that have shown interest and meet initial qualification criteria.",
+    "Leads currently in pricing discussions, proposal review, or contract negotiation.",
+    "Deals successfully closed and converted into customers.",
   ];
   await Promise.all(
     columnNames.map((name, i) =>
